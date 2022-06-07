@@ -1,0 +1,61 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "overrides": [
+        {
+            "files": ["*.ts", "*.tsx"],
+            "parserOptions": {
+                "project": ["./tsconfig.json"]
+            },
+            "extends": [
+                "eslint:recommended",
+                "plugin:@typescript-eslint/recommended",
+                "plugin:react/recommended"
+            ],
+            "rules": {
+                "react/jsx-wrap-multilines": ["error", {
+                    "declaration": "parens-new-line",
+                    "assignment": "parens-new-line",
+                    "return": "parens-new-line",
+                    "arrow": "parens-new-line",
+                    "condition": "parens-new-line",
+                    "logical": "parens-new-line",
+                    "prop": "parens-new-line"
+                }],
+                "react/jsx-closing-bracket-location": ["error", "tag-aligned"],
+                "react/jsx-first-prop-new-line": "error",
+                "react/jsx-max-props-per-line": ["error", { "maximum": 1 }],
+                "react/jsx-first-prop-new-line": ["error", "always"],
+                "react/no-unused-state": "error",
+                "@typescript-eslint/comma-dangle": ["error", "never"],
+                "@typescript-eslint/indent": ["error", 4],
+                "@typescript-eslint/quotes": ["error", "single"],
+                "@typescript-eslint/no-unused-vars": ["error", {
+                    "vars": "all",
+                    "args": "all",
+                    "argsIgnorePattern": "^_",
+                    "varsIgnorePattern": "^_",
+                    "caughtErrorsIgnorePattern": "^_"
+                }],
+                "@typescript-eslint/semi": ["error", "always"],
+                "no-trailing-spaces": ["error"],
+                "@typescript-eslint/object-curly-spacing": ["error", "always"],
+                "array-bracket-spacing": ["error", "always",
+                    {
+                        "objectsInArrays": false,
+                        "arraysInArrays": false
+                    }
+                ],
+                "key-spacing": ["error", {
+                    "beforeColon": false,
+                    "afterColon": true
+                }],
+                "react/react-in-jsx-scope": "off",
+                "func-style": ["error", "declaration", { "allowArrowFunctions": true }]
+            }
+        }
+    ]
+}
