@@ -1,19 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     View,
     Text,
     StyleSheet,
     Image,
-    Dimensions,
-    Button
+    Dimensions
 } from 'react-native';
 import { useFonts } from 'expo-font';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { StackParamList } from 'src/utils/navigation';
 
 const screenWidth = Dimensions.get('screen').width;
 
-const styles = StyleSheet.create({
+const defaultStyles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'rgb(223, 223, 223)'
@@ -26,12 +23,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
-    logo: {
-        width: 120,
-        height: 120
-    },
     title: {
-        fontFamily: 'Montserrat-Light',
         fontSize: 24,
         color: '#rgb(51, 51, 51)',
         lineHeight: 30,
@@ -46,17 +38,28 @@ const styles = StyleSheet.create({
     }
 });
 
-const LandingScreen: React.FC<NativeStackScreenProps<StackParamList, 'Landing'>> = ({ navigation }) => {
-    const [ _fontsLoaded ] = useFonts({
+const LandingScreen: React.FC = () => {
+    const [ styles, setStyles ] = useState<StyleSheet.NamedStyles<{ [key: string]: unknown }>>(defaultStyles);
+    const [ fontsLoaded ] = useFonts({
         'Montserrat-Light': require('../../../assets/fonts/Montserrat-Light.ttf')
     });
+
+    useEffect(() => {
+        if (fontsLoaded)
+            setStyles({
+                ...defaultStyles,
+                title: {
+                    ...defaultStyles.title,
+                    fontFamily: 'Montserrat-Light'
+                }
+            } as StyleSheet.NamedStyles<{ [key: string]: unknown }>);
+    }, [ fontsLoaded ]);
 
     const {
         container,
         navigator,
         body,
         footer,
-        logo,
         title
     } = styles;
 
@@ -71,7 +74,8 @@ const LandingScreen: React.FC<NativeStackScreenProps<StackParamList, 'Landing'>>
                 style={body}
             >
                 <Image
-                    style={logo}
+                    height={120}
+                    width={120}
                     source={require('../../../assets/images/chart.png')}
                 />
                 <Text
@@ -79,10 +83,6 @@ const LandingScreen: React.FC<NativeStackScreenProps<StackParamList, 'Landing'>>
                 >
                     Your trading Journal
                 </Text>
-                <Button
-                    title="Ir a inicio"
-                    onPress={() => navigation.navigate('Home')}
-                />
             </View>
             <View
                 style={footer}

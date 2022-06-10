@@ -14,8 +14,30 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 // Icons
 import { FontAwesome5, FontAwesome } from '@expo/vector-icons';
+import { Animated, StyleProp, ViewStyle } from 'react-native';
 
 const Tab = createBottomTabNavigator();
+
+const tabBarStyle: Animated.WithAnimatedValue<StyleProp<ViewStyle>> = {
+    height: 60,
+    backgroundColor: '#fff',
+    position: 'absolute',
+    bottom: 35,
+    marginHorizontal: 20,
+    borderRadius: 10,
+    shadowColor: '#222',
+    shadowOpacity: .06,
+    shadowOffset: {
+        width: 10,
+        height: 10
+    },
+    paddingHorizontal: 20
+};
+
+const tabBarBadgeStyle = {
+    backgroundColor: '#e98f1e',
+    color: '#fff'
+};
 
 const BottomTabNavigator = () => {
     return (
@@ -25,25 +47,8 @@ const BottomTabNavigator = () => {
                 tabBarInactiveTintColor: '#888',
                 headerShown: false,
                 tabBarLabel: () => false,
-                tabBarStyle: {
-                    height: 60,
-                    backgroundColor: '#fff',
-                    position: 'absolute',
-                    bottom: 35,
-                    marginHorizontal: 20,
-                    borderRadius: 10,
-                    shadowColor: '#222',
-                    shadowOpacity: .06,
-                    shadowOffset: {
-                        width: 10,
-                        height: 10
-                    },
-                    paddingHorizontal: 20
-                },
-                tabBarBadgeStyle: {
-                    backgroundColor: '#e98f1e',
-                    color: '#fff'
-                }
+                tabBarStyle,
+                tabBarBadgeStyle
             }}
         >
             <Tab.Screen
