@@ -38,7 +38,7 @@ const defaultStyles = StyleSheet.create({
     }
 });
 
-const LandingScreen: React.FC = () => {
+export const LandingScreen: React.FC = () => {
     const [ styles, setStyles ] = useState<StyleSheet.NamedStyles<{ [key: string]: unknown }>>(defaultStyles);
     const [ fontsLoaded ] = useFonts({
         'Montserrat-Light': require('../../../assets/fonts/Montserrat-Light.ttf')
@@ -90,5 +90,3 @@ const LandingScreen: React.FC = () => {
         </View>
     );
 };
-
-export default LandingScreen;

@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-const NotificationsScreen: React.FC = () => {
+export const NotificationsScreen: React.FC = () => {
 
     return (
         <SafeAreaView
@@ -32,5 +32,3 @@ const styles = StyleSheet.create({
         backgroundColor: 'cyan'
     }
 });
-
-export default NotificationsScreen;
