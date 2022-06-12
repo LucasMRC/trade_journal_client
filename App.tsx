@@ -2,9 +2,18 @@ import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
-import { BottomTabNavigator } from './src/utils';
-import AppProvider from './src/utils/app_context';
+import { StyleSheet } from 'react-native';
+
+// Utils
+// import { BottomTabNavigator } from './src/utils';
+
+// Store
+import { Provider } from 'react-redux';
+import { store } from './src/redux';
+
+// Screens
 import { LandingScreen } from './src/screens';
+import { RegisterScreen } from './src/screens';
 
 const App = () => {
     const [ isReady, setIsReady ] = React.useState(false);
@@ -14,21 +23,32 @@ const App = () => {
     }, [ ]);
 
     return (
-        <SafeAreaProvider>
-            <AppProvider>
+        <SafeAreaProvider
+            style={styles.appContainer}
+        >
+            <Provider
+                store={store}
+            >
                 <NavigationContainer>
                     <StatusBar
                         style="auto"
                     />
-                    {isReady ? (
-                        <BottomTabNavigator />
+                    { isReady ? (
+                        <RegisterScreen />
                     ) : (
                         <LandingScreen />
                     )}
                 </NavigationContainer>
-            </AppProvider>
+            </Provider>
         </SafeAreaProvider>
     );
 };
 
 export default App;
+
+const styles = StyleSheet.create({
+    appContainer: {
+        backgroundColor: '#1B232A',
+        paddingHorizontal: 20
+    }
+});
