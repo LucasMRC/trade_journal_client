@@ -12,7 +12,7 @@ const AppContext = createContext<{
     setNotifications: () => null
 });
 
-const AppProvider: React.FC<ProviderProps> = ({ children }: ProviderProps) => {
+export const AppProvider: React.FC<ProviderProps> = ({ children }: ProviderProps) => {
     const [ notifications, setNotifications ] = useState(0);
 
     return (
@@ -32,5 +32,3 @@ export const useAppContext = () => {
 
     return context;
 };
-
-export default AppProvider;

@@ -39,7 +39,7 @@ const tabBarBadgeStyle = {
     color: '#fff'
 };
 
-const BottomTabNavigator = () => {
+export const BottomTabNavigator = () => {
     return (
         <Tab.Navigator
             screenOptions={{
@@ -125,5 +125,3 @@ const BottomTabNavigator = () => {
         </Tab.Navigator>
     );
 };
-
-export default BottomTabNavigator;
