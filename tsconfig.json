@@ -1,29 +1,35 @@
 {
+  "ts-node": {
+		"require": ["tsconfig-paths/register"]
+	},
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true,
     "strictNullChecks": true,
     "noImplicitAny": true,
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
-      "@": [
-        "src"
+      "@screens/*": [
+        "src/screens/*"
       ],
-      "@screens": [
-        "src/screens"
+      "@utils/*": [
+        "src/utils/*"
       ],
-      "@utils": [
-        "src/utils"
+      "@redux/*": [
+        "src/redux/*"
       ],
-      "@redux": [
-        "src/redux"
+      "@images/*": [
+        "/assets/images/*"
       ],
-      "@images": [
-        "assets/images"
+      "@assets/*": [
+        "assets/*"
       ],
-      "@fonts": [
-        "assets/fonts"
-      ]
+      "@api/*": [
+        "src/api/*"
+      ],
+      "@/*": [
+        "src/*"
+      ],
     }
   }
 }
