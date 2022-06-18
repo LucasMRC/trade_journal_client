@@ -4,4 +4,4 @@ export * from './Profile';
 export * from './Assets';
 export * from './Notifications';
 export * from './Trades';
-export * from './Register';
+export * from './Authentication';
