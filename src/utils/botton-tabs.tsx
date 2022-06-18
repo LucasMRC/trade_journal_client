@@ -15,6 +15,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // Icons
 import { FontAwesome5, FontAwesome } from '@expo/vector-icons';
 import { Animated, StyleProp, ViewStyle } from 'react-native';
+import { useAppContext } from './app_context';
 
 const Tab = createBottomTabNavigator();
 
@@ -40,6 +41,8 @@ const tabBarBadgeStyle = {
 };
 
 export const BottomTabNavigator = () => {
+    const { notifications } = useAppContext();
+
     return (
         <Tab.Navigator
             screenOptions={{
@@ -105,7 +108,7 @@ export const BottomTabNavigator = () => {
                             color={color}
                         />
                     ),
-                    tabBarBadge: 3
+                    tabBarBadge: notifications
                 }}
             />
             <Tab.Screen
