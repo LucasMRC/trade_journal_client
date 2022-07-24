@@ -27,9 +27,15 @@
       "@api/*": [
         "src/api/*"
       ],
+      "@config/*": [
+        "src/config/*"
+      ],
       "@/*": [
         "src/*"
       ],
+      "@env": [
+        "node_modules/react-native-dotenv"
+      ]
     }
   }
 }

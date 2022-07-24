@@ -12,9 +12,21 @@ module.exports = function(api) {
 						'@screens': './src/screens',
 						'@redux': './src/redux',
 						'@api': './src/api',
+						'@config': './src/config',
 						'@utils': './src/utils',
 						'@components': './src/components'
 					}
+				}
+			],
+			[
+				"module:react-native-dotenv", {
+					"moduleName": "@env",
+					"path": "./.env",
+					"blocklist": null,
+					"allowlist": null,
+					"safe": false,
+					"allowUndefined": false,
+					"verbose": false
 				}
 			]
 		]
