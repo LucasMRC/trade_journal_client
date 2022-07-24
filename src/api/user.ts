@@ -1,11 +1,11 @@
 
-import { http } from '@utils/http';
+import { http } from '@config/http';
 
-export const register = async (email: string, password: string, username = '') => {
-    return await http.post('/users/register', { email, password, username });
+export const register = async (username: string, email: string, password: string) => {
+    return await http.register(username, email, password);
 };
 
 
 export const login = async (email: string, password: string, username = '') => {
-    http.login(email, password, username);
+    return http.login(email, password, username);
 };

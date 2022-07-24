@@ -21,14 +21,17 @@ import { login, register } from '@api/user';
 
 export const AuthenticationScreen: React.FC = () => {
     const [ formAction, setFormAction ] = useState<'LOGIN' | 'REGISTER'>('LOGIN');
-    const [ email, setEmail ] = useState('');
+    const [ email, setEmail ] = useState('lucas@zenrise.io');
+    const [ username, setUsername ] = useState('LucasMRC');
     const [ emailIsValid, setEmailIsValid ] = useState(true);
-    const [ password, setPassword ] = useState('');
+    const [ password, setPassword ] = useState('660Test!');
     const [ hidePassword, setHidePassword ] = useState(true);
 
     const handleAction = async () => {
-        const action = formAction === 'LOGIN' ? login : register;
-        await action(email, password)
+        const action = formAction === 'LOGIN'
+            ? () => login(email, password)
+            : () => register(username, email, password);
+        await action()
             .catch((error: Error) => {
                 Alert.alert('', `Error on authentication: ${error.message}`, [{ text: 'OK' }]);
                 alert(`Error on authentication: ${error.message}`);
@@ -72,6 +75,43 @@ export const AuthenticationScreen: React.FC = () => {
             >
                 {`Sign ${formAction === 'LOGIN' ? 'in' : 'up'}`}
             </Text>
+            {formAction === 'REGISTER' && (
+                <Pressable>
+                    <View
+                        style={{ position: 'relative' }}
+                    >
+                        <Text
+                            style={styles.label}
+                        >
+                        Username:
+                        </Text>
+                        <TextInput
+                            style={styles.input}
+                            autoCapitalize="none"
+                            value={username}
+                            onChangeText={text => setUsername(text)}
+                            autoCorrect={false}
+                            keyboardType="default"
+                            returnKeyType="next"
+                            placeholder="Choose a username"
+                            placeholderTextColor="#777"
+                        />
+                        <TouchableOpacity
+                            onPress={() => setHidePassword(prevState => !prevState)}
+                        >
+                            <View
+                                style={styles.eyeIconContainer}
+                            >
+                                <FontAwesome5
+                                    name={hidePassword ? 'eye-slash' : 'eye'}
+                                    color="#777"
+                                    size={20}
+                                />
+                            </View>
+                        </TouchableOpacity>
+                    </View>
+                </Pressable>
+            )}
             <Pressable>
                 <View>
                     <Text

@@ -4,7 +4,7 @@ interface ProviderProps {
     children: React.ReactNode;
 }
 
-type ScreenName = 'HOME' | 'TRADES' | 'PROFILE' | 'NOTIFICATION';
+type ScreenName = 'HOME' | 'TRADES' | 'PROFILE' | 'NOTIFICATION' | 'AUTHENTICATION';
 
 const AppContext = createContext<{
     notifications: number;

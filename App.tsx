@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
@@ -9,14 +9,13 @@ import { StyleSheet } from 'react-native';
 
 // Store
 import { Provider } from 'react-redux';
-import { store } from './src/redux';
+import { store } from '@/redux';
 
 // Screens
-import { LandingScreen } from './src/screens';
-import { RegisterScreen } from './src/screens';
+import { /* LandingScreen, */ AuthenticationScreen } from '@/screens';
 
 const App = () => {
-    const [ isReady, setIsReady ] = React.useState(false);
+    const [ isReady, setIsReady ] = useState(false);
 
     useEffect(() => {
         setTimeout(() => setIsReady(true), 3000);
@@ -34,9 +33,9 @@ const App = () => {
                         style="auto"
                     />
                     { isReady ? (
-                        <RegisterScreen />
+                        <AuthenticationScreen />
                     ) : (
-                        <LandingScreen />
+                        <AuthenticationScreen />
                     )}
                 </NavigationContainer>
             </Provider>
